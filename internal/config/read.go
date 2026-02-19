@@ -14,7 +14,7 @@ func Read() Config {
 	}
 	jsonData, err := os.ReadFile(fmt.Sprintf("%s/.gatorconfig.json", homeDir))
 	if err != nil {
-		fmt.Errorf("Error reading config file: %s", err)
+		fmt.Errorf("Error reading .gatorconfig file: %s", err)
 	}
 	err = json.Unmarshal(jsonData, &userConfig)
 	if err != nil {
