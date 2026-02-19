@@ -25,7 +25,6 @@ func main() {
 	err = cmds.run(state, argsSlice[0])
 	if err != nil {
 		fmt.Errorf("Error running command: %s", err)
->>>>>>> 9c781bf (Fixed bugs and added partial command functionality)
 	}
 	cfg = config.Read()
 	fmt.Printf("%v", cfg)
