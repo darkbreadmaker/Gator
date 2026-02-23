@@ -4,10 +4,6 @@ import (
 	"fmt"
 )
 
-type state struct {
-	Config *Config
-}
-
 type command struct {
 	name string
 	args []string
@@ -18,7 +14,7 @@ type commands struct {
 }
 
 func (c *commands) run(s *state, cmd command) error {
-	err := c.cmds[cmd.name](s)
+	err := c.cmds[cmd.name](s, cmd)
 	if err != nil {
 		fmt.Errorf("Error running command: %s", err)
 	}
@@ -33,7 +29,7 @@ func handlerLogin(s *state, cmd command) error {
 	if len(cmd.args) == 0 {
 		return fmt.Errorf("No arguments, need 1")
 	}
-	err := s.Config.SetUser(cmd.args[0])
+	err := s.config.SetUser(cmd.args[0])
 	if err != nil {
 		return fmt.Errorf("Error setting user: %s", err)
 	}
